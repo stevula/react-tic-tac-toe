@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Square.styles';
 
-function Square({ mark }) {
+function Square({ mark, onClick }) {
   return (
-    <div className={styles}>
+    <button type="button" className={styles} onClick={onClick}>
       {mark}
-    </div>
+    </button>
   );
 }
 
 Square.propTypes = {
+  onClick: PropTypes.func.isRequired,
   mark: PropTypes.string,
 };
 
