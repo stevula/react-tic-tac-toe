@@ -1,11 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function Square(props) {
+function Square({ mark }) {
   return (
     <div>
-      Square
+      {mark}
     </div>
   );
 }
+
+Square.propTypes = {
+  mark: PropTypes.string,
+};
+
+Square.defaultProps = {
+  mark: '',
+};
 
 export default Square;
