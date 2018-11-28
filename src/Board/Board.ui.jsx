@@ -4,11 +4,11 @@ import styles from './Board.styles';
 import Row from '../Row/Row.ui';
 
 // Returns true if every non-falsy element is the same.
-const isEveryElementSame = array => array.slice(1).every(element => (
+const isStreak = array => array.slice(1).every(element => (
   element && element === array[0]
 ));
 
-// Reverses an array, returns a new array without mutating the original.
+// Reverses an array, returning a new array without mutating the original.
 const reverse = array => array.slice().reverse();
 
 class Board extends Component {
@@ -17,34 +17,58 @@ class Board extends Component {
     this.state = {
       board: props.board,
       currentPlayer: 'X',
+      isWon: false,
+      isStalemate: false,
     };
 
     this.updateBoardAt = this.updateBoardAt.bind(this);
   }
 
-  // 1. announce winner
-  // 2. detect stalemate
+  checkWinConditions() {
+    if (this.isGameWon()) {
+      this.setState({ isWon: true });
+    } else if (this.isBoardFull()) {
+      this.setState({ isStalemate: true });
+    } else {
+      this.nextTurn();
+    }
+  }
 
-  isWinner() {
+  isBoardFull() {
+    const { board } = this.state;
+    return board.reduce((isStale, row) => row.every(val => val !== ''), true);
+  }
+
+  isGameWon() {
+    let didFindBlank = false;
     const { board } = this.state;
 
     for (let rowNumber = 0; rowNumber < board.length; rowNumber += 1) {
       const row = board[rowNumber];
-      if (isEveryElementSame(row)) return true;
+      if (isStreak(row)) {
+        return true;
+      }
+      didFindBlank = didFindBlank || row.includes('');
     }
 
     for (let colNumber = 0; colNumber < board.length; colNumber += 1) {
       const column = board.map((_, index) => board[index][colNumber]);
-      if (isEveryElementSame(column)) return true;
+      if (isStreak(column)) {
+        return true;
+      }
     }
 
     // check if any diagonal streak (top left to bottom right)
     const diagonalA = board.map((_, index) => board[index][index]);
-    if (isEveryElementSame(diagonalA)) return true;
+    if (isStreak(diagonalA)) {
+      return true;
+    }
 
     // check if any diagonal streak (bottom left to top right)
     const diagonalB = reverse(board).map((_, index) => reverse(board[index])[index]);
-    if (isEveryElementSame(diagonalB)) return true;
+    if (isStreak(diagonalB)) {
+      return true;
+    }
 
     return false;
   }
@@ -60,18 +84,30 @@ class Board extends Component {
     const rowCopy = [...board[x]];
     rowCopy[y] = mark;
     boardCopy[x] = rowCopy;
-    this.setState({
-      board: boardCopy,
-    }, () => console.log(this.isWinner()));
+    this.setState({ board: boardCopy }, () => this.checkWinConditions());
   }
+
+  getMessage() {
+    const { currentPlayer, isWon, isStalemate } = this.state;
+
+    if (isWon) {
+      return `${currentPlayer} won!`;
+    }
+
+    if (isStalemate) {
+      return 'Stalemate!';
+    }
+
+    return `${currentPlayer}'s Turn`;
+  }
+
 
   render() {
     const { board, currentPlayer } = this.state;
-    const message = `${currentPlayer}'s Turn`;
 
     return (
       <div className={styles}>
-        <p>{message}</p>
+        <p>{this.getMessage()}</p>
 
         {board.map((row, index) => (
           <Row
