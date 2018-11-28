@@ -4,31 +4,30 @@ import styles from './Board.styles';
 import Row from '../Row/Row.ui';
 
 class Board extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       board: props.board,
+      currentPlayer: 'X',
     };
 
     this.updateBoardAt = this.updateBoardAt.bind(this);
   }
 
   updateBoardAt(mark, { x, y }) {
-    console.log({ mark, x, y})
-    const { board } = this.state;
-    console.log('1')
+    const { board, currentPlayer } = this.state;
     const boardCopy = [...board];
-    console.log('2')
     const rowCopy = [...board[x]];
-    console.log('3')
     rowCopy[y] = mark;
     boardCopy[x] = rowCopy;
-    this.setState({ board: boardCopy });
+    this.setState({
+      board: boardCopy,
+      currentPlayer: currentPlayer === 'X' ? 'O' : 'X',
+    });
   }
 
   render() {
-    const { board } = this.state;
+    const { board, currentPlayer } = this.state;
 
     return (
       <div className={styles}>
@@ -37,7 +36,7 @@ class Board extends Component {
             key={index}
             rowNumber={index}
             marks={row}
-            markSquare={(x, y) => this.updateBoardAt('X', { x, y })}
+            markSquare={(x, y) => this.updateBoardAt(currentPlayer, { x, y })}
           />
         ))}
       </div>
