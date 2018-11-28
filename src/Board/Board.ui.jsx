@@ -28,9 +28,12 @@ class Board extends Component {
 
   render() {
     const { board, currentPlayer } = this.state;
+    const message = `${currentPlayer}'s Turn`;
 
     return (
       <div className={styles}>
+        <p>{message}</p>
+
         {board.map((row, index) => (
           <Row
             key={index}
