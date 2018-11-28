@@ -7,7 +7,7 @@ function Square({ mark, onClick, colNumber }) {
     <button
       type="button"
       className={styles}
-      onClick={() => onClick(colNumber)}
+      onClick={() => !mark && onClick(colNumber)}
     >
       {mark}
     </button>
