@@ -24,6 +24,20 @@ class Board extends Component {
     this.updateBoardAt = this.updateBoardAt.bind(this);
   }
 
+  getMessage() {
+    const { currentPlayer, isWon, isStalemate } = this.state;
+
+    if (isWon) {
+      return `${currentPlayer} won!`;
+    }
+
+    if (isStalemate) {
+      return 'Stalemate!';
+    }
+
+    return `${currentPlayer}'s Turn`;
+  }
+
   checkWinConditions() {
     if (this.isGameWon()) {
       this.setState({ isWon: true });
@@ -86,21 +100,6 @@ class Board extends Component {
     boardCopy[x] = rowCopy;
     this.setState({ board: boardCopy }, () => this.checkWinConditions());
   }
-
-  getMessage() {
-    const { currentPlayer, isWon, isStalemate } = this.state;
-
-    if (isWon) {
-      return `${currentPlayer} won!`;
-    }
-
-    if (isStalemate) {
-      return 'Stalemate!';
-    }
-
-    return `${currentPlayer}'s Turn`;
-  }
-
 
   render() {
     const { board, currentPlayer } = this.state;
