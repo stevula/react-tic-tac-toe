@@ -857,7 +857,7 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.1.5":
   version "7.1.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.1.5.tgz#4170907641cf1f61508f563ece3725150cc6fe39"
   integrity sha512-xKnPpXG/pvK1B90JkwwxSGii90rQGKtzcMt2gI5G6+M0REXaq6rOHsGC2ay6/d0Uje7zzvSzjEzfR3ENhFlrfA==
@@ -1067,6 +1067,11 @@
   dependencies:
     exenv "^1.2.2"
     prop-types "^15.6.2"
+
+"@sheerun/mutationobserver-shim@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@sheerun/mutationobserver-shim/-/mutationobserver-shim-0.3.2.tgz#8013f2af54a2b7d735f71560ff360d3a8176a87b"
+  integrity sha512-vTCdPp/T/Q3oSqwHmZ5Kpa9oI7iLtGl3RQaA/NyLHikvcrPxACkkKVr/XzkSPJWXHRhKGzVvb0urJsbMlRxi1Q==
 
 "@storybook/addon-actions@^4.0.9":
   version "4.0.9"
@@ -4024,6 +4029,16 @@ dom-serializer@0:
   dependencies:
     domelementtype "~1.1.1"
     entities "~1.1.1"
+
+dom-testing-library@^3.12.0:
+  version "3.12.5"
+  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.12.5.tgz#81f827e03519a9842d1066a76e7c38063d859f78"
+  integrity sha512-sO+N8G6DEsZ/+A3AikBDixVOyDbGiTwfl+CVjsjtUrj0ed+JGAUbCOFbrUEdCpw/dZNxKI0RDgGbxoONHR2Xpw==
+  dependencies:
+    "@babel/runtime" "^7.1.5"
+    "@sheerun/mutationobserver-shim" "^0.3.2"
+    pretty-format "^23.6.0"
+    wait-for-expect "^1.1.0"
 
 dom-walk@^0.1.0:
   version "0.1.1"
@@ -9334,6 +9349,13 @@ react-style-proptype@^3.0.0:
   dependencies:
     prop-types "^15.5.4"
 
+react-testing-library@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-5.3.0.tgz#b88124441d8756438137b705eb26a99410de69cc"
+  integrity sha512-hUXurQC8b828s2Fyuyuibz1PvPbGWb5vSIDCb1ihcGVjzBP9OGnsAm6Dhpu7XqC1o/68KJ/5/QdkeiTDxS9gpw==
+  dependencies:
+    dom-testing-library "^3.12.0"
+
 react-textarea-autosize@^7.0.4:
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-7.0.4.tgz#4e4be649b544a88713e7b5043f76950f35d3d503"
@@ -11124,6 +11146,11 @@ w3c-xmlserializer@^1.0.0:
     domexception "^1.0.1"
     webidl-conversions "^4.0.2"
     xml-name-validator "^3.0.0"
+
+wait-for-expect@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/wait-for-expect/-/wait-for-expect-1.1.0.tgz#6607375c3f79d32add35cd2c87ce13f351a3d453"
+  integrity sha512-vQDokqxyMyknfX3luCDn16bSaRcOyH6gGuUXMIbxBLeTo6nWuEWYqMTT9a+44FmW8c2m6TRWBdNvBBjA1hwEKg==
 
 walker@~1.0.5:
   version "1.0.7"
