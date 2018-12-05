@@ -1,25 +1,40 @@
-Trying out React 16.6 and some libraries.
+Trying out React 16.6 and libraries.
 
-React APIs:
-- Context
-- new lifecycle methods
-- hooks
-- fragments
-- React.memo
-- portals
+# Features
+- Supports 3x3 or any square board
+- Storybook component gallery
 
-Component libraries:
-- [Semantic UI](https://github.com/Semantic-Org/Semantic-UI-React)
+# Requirements
+- node
+
+# Installation
+Install JS dependencies:
+```
+npm install
+```
+
+# Run
+Run the app:
+```
+yarn start
+```
+
+Run Storybook:
+```
+yarn run storybook
+```
+
+Run tests:
+```
+yarn test
+```
 
 State management:
 - [mobx](https://github.com/mobxjs/mobx)
 
 Styling:
-- [styled-components](https://github.com/styled-components/styled-components)
 - [emotion](https://github.com/emotion-js/emotion)
 
 Testing:
 - [react-testing-library](https://github.com/kentcdodds/react-testing-library)
 
-UI Tools:
-- [Storybook](https://github.com/storybooks/storybook)
